@@ -6,5 +6,13 @@ pokemonList = [
 
 // loop to list out each Pokemon's information
 for (let i = 0; i < pokemonList.length; i++) {
-    document.write(pokemonList[i].name + ' (height:' + pokemonList[i].height + ')' + '<br/>');
+    text = pokemonList[i].name + ' (height: ' + pokemonList[i].height + ')';
+
+    // conditional
+    if (pokemonList[i].height > 0.5) {
+        text = text + ' - Wow that\'s a big Pokemon!';
+    }
+
+    document.write(text + '<br><br>');
+
 }
