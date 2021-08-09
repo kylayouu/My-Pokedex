@@ -1,0 +1,12 @@
+ul {
+	list-style: none;
+}
+
+.pokemon-name-btn {
+	background-color: rgb(152, 213, 253);
+	color: #000;
+	border-radius: 8px;
+	padding: 5px 10px;
+	border: none;
+	margin: 1px;
+}
