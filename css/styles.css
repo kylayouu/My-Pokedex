@@ -41,7 +41,15 @@ ul {
   padding: 15px;
   width: 100%;
   max-width: 700px;
-  text-align: left;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px 2px rgb(0 0 0 / 20%)
+}
+
+.modal > img {
+  margin-left: 3em;
+  margin-bottom: 1.3em;
+  border: 1px solid rgb(146, 146, 146);
+  box-shadow: 0 0 5px rgb(0 0 0 / 20%)
 }
 
 .modal-close {
