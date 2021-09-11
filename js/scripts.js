@@ -1,53 +1,51 @@
-// IIFE to return functions add(), getAll(), addListItem()
 let pokemonRepository = (function() {
-  // let pokemonList = [
-  //   {name: 'Bulbasaur', height: 0.7, type: ['grass', 'poison']},
-  //   {name: 'Charmander', height: 0.6, type: 'fire'},
-  //   {name: 'Pikachu', height: 0.4, type: 'electric'}
-  // ];
 
-
-  const apiURL = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+  const apiURL = 'https://pokeapi.co/api/v2/pokemon/?limit=180';
   let pokemonList = [];
 
   loadList = () => {
-
   fetch(apiURL)
-  .then(response=>response.json())
+  .then(response => response.json())
   .then(response =>
   {
     pokemonList = response.results;
-    pokemonList.forEach(pokemon=>{
-    let newPokemonList = document.querySelector(".pokemon-list");
-      let listItemPokemon = document.createElement("li");
-      let button = document.createElement("button");
-      button.innerText = pokemon.name;
-      button.classList.add("pokemon-name-btn");
-      button.addEventListener('click', function() {
+    pokemonList.forEach(pokemon => {
 
-        fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`)
-        .then(response=>response.json())
-        .then(response=>{
-          console.log(response)
-          console.log(response.sprites.back_shiny)
+    let newPokemonList = document.querySelector('.pokemon-list');
+    let listItemPokemon = document.createElement('li');
+    listItemPokemon.classList.add('col-sm-4');
+    listItemPokemon.classList.add('col-md-3');
+    listItemPokemon.classList.add('col-lg-2');
+    let button = document.createElement('button');
+    button.innerText = pokemon.name;
+    button.classList.add('pokemon-name-btn');
+    button.classList.add('col');
+    button.setAttribute('data-toggle', 'modal');
+    button.setAttribute('data-target', '#exampleModal');
+    button.addEventListener('click', function() {
 
-           let pokemonDetails = `Height: ${response.height}`
-       
-
-        modal.showModal(`${pokemon.name}`, `${pokemonDetails}`, `${response.sprites.back_shiny}`);
-
-
-        })
-        .catch(err=>console.error(err))
-
-       
-        // alert(pokemonDetails);
-      });
-      listItemPokemon.appendChild(button);
-      newPokemonList.appendChild(listItemPokemon);
+      fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`)
+      .then(response=>response.json())
+      .then(response=>{
+        
+        pokemonHeight = `${response.height}`;
+        pokemonWeight = `${response.weight}`;
+        let pokemonDetails = $('<p>' + 'Height: ' + pokemonHeight + '<br />' + 'Weight: ' + pokemonWeight + '</p>');
+        pokemonDetails.attr('class', 'col');
+        let pokemonImg = (`<img class='col-5' src="${response.sprites.front_shiny}">`);
+        $('.modal-title').html(pokemon.name);
+        $('.modal-body').html('')
+        $('.modal-body').append(`${pokemonImg}`, pokemonDetails);
       })
-      })
-      .catch(error=>console.log(error))
+    
+      .catch(err=>console.error(err))
+      // alert(pokemonDetails);
+    });
+    listItemPokemon.appendChild(button);
+    newPokemonList.appendChild(listItemPokemon);
+    })
+    })
+    .catch(error=>console.log(error))
   }
 
   function getAll() {
@@ -70,5 +68,4 @@ let pokemonRepository = (function() {
   };
 })();
 
-// forEach() loop to display the buttons for the Pokemon list
 pokemonRepository.getAll();
