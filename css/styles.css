@@ -39,7 +39,10 @@ ul {
 
 .modal-body > p {
   padding-left: 2rem;
-  padding-top: 1.5rem;
+  padding-right: 0;
+  /* padding-top: 1.5rem; */
+  margin: auto;
+  text-align: center;
 }
 
 .page-title {

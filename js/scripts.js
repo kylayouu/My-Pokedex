@@ -30,9 +30,15 @@ let pokemonRepository = (function() {
         
         pokemonHeight = `${response.height}`;
         pokemonWeight = `${response.weight}`;
-        let pokemonDetails = $('<p>' + 'Height: ' + pokemonHeight + '<br />' + 'Weight: ' + pokemonWeight + '</p>');
+        pokemonTypes = `${response.types.map(function (pokemon) {
+          return pokemon.type.name;
+        })}`;
+        pokemonAbilities = `${response.abilities.map(function (pokemon) {
+          return pokemon.ability.name;
+        })}`;
+        let pokemonDetails = $('<p>' + 'Height: ' + pokemonHeight + '<br />' + 'Weight: ' + pokemonWeight + '<br />' + 'Type(s): ' + pokemonTypes + '<br />' + 'Abilities: ' + pokemonAbilities + '</p>');
         pokemonDetails.attr('class', 'col');
-        let pokemonImg = (`<img class='col-5' src="${response.sprites.front_shiny}">`);
+        let pokemonImg = (`<img class='col' src="${response.sprites.front_shiny}">`);
         $('.modal-title').html(pokemon.name);
         $('.modal-body').html('')
         $('.modal-body').append(`${pokemonImg}`, pokemonDetails);
