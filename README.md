@@ -8,7 +8,8 @@ Linter(s) used: ESLint with Prettier
 {
   "env": {
     "es6": true,
-    "browser": true
+    "browser": true,
+    "jquery": true
   },
   "extends": [
     "eslint:recommended"

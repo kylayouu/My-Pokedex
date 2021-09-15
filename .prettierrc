@@ -3,5 +3,6 @@
   "useTabs": false,
   "editor.formatOnSave": false,
   "[javascript]": {
-    "editor.formatOnSave": true}
+    "editor.formatOnSave": true},
+  "singleQuote": true
 }

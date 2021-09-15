@@ -8,6 +8,7 @@ let pokemonRepository = (function() {
   .then(response => response.json())
   .then(response =>
   {
+    let pokemonDetails;
     pokemonList = response.results;
     pokemonList.forEach(pokemon => {
 
@@ -28,15 +29,15 @@ let pokemonRepository = (function() {
         .then(response=>response.json())
         .then(response=>{
           
-          pokemonHeight = `${response.height}`;
-          pokemonWeight = `${response.weight}`;
-          pokemonTypes = `${response.types.map(function (pokemon) {
+          let pokemonHeight = `${response.height}`;
+          let pokemonWeight = `${response.weight}`;
+          let pokemonTypes = `${response.types.map(function (pokemon) {
             return pokemon.type.name;
           })}`;
-          pokemonAbilities = `${response.abilities.map(function (pokemon) {
+          let pokemonAbilities = `${response.abilities.map(function (pokemon) {
             return pokemon.ability.name;
           })}`;
-          let pokemonDetails = $('<p>' + 'Height: ' + pokemonHeight + '<br />' + 'Weight: ' + pokemonWeight + '<br />' + 'Type(s): ' + pokemonTypes + '<br />' + 'Abilities: ' + pokemonAbilities + '</p>');
+          pokemonDetails = $('<p>' + 'Height: ' + pokemonHeight + '<br />' + 'Weight: ' + pokemonWeight + '<br />' + 'Type(s): ' + pokemonTypes + '<br />' + 'Abilities: ' + pokemonAbilities + '</p>');
           pokemonDetails.attr('class', 'col');
           let pokemonImg = (`<img class='col' src="${response.sprites.front_shiny}">`);
           $('.modal-title').html(pokemon.name);
@@ -53,19 +54,19 @@ let pokemonRepository = (function() {
       })
     })
     .catch(error=>console.log(error))
-  };
+  }
 
   function getAll() {
     loadList();
-  };
+  }
 
   function add(pokemon) {
     return pokemonList.push(pokemon);
-  };
+  }
 
   function showDetails(pokemon) {
     console.log(pokemon)
-  };
+  }
 
   return {
     getAll: getAll,

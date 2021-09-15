@@ -1,7 +1,8 @@
 {
   "env": {
     "es6": true,
-    "browser": true
+    "browser": true,
+    "jquery": true
   },
   "extends": [
     "eslint:recommended"
@@ -9,6 +10,5 @@
   "rules": {
     "quotes": ["error", "single"],
 		"no-var": ["error"]
-  },
-	"parser": "@babel/eslint-parser"
+  }
 }
